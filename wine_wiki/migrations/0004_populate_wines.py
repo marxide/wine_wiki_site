@@ -7,7 +7,7 @@ import csv
 
 def import_wines(apps, schema_editor):
     exported_data_path = Path(
-        "/Users/jonathan/jonathan/projects/wine_wiki/wine_list_db"
+        "/home/winewiki/wine_list_db"
     )
     wine_list_path = exported_data_path / "wine_list.csv"
 

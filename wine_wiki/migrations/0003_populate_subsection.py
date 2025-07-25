@@ -7,7 +7,7 @@ import csv
 
 def import_subsection(apps, schema_editor):
     exported_data_path = Path(
-        "/Users/jonathan/jonathan/projects/wine_wiki/wine_list_db"
+        "/home/winewiki/wine_list_db"
     )
     subsection_path = exported_data_path / "subsection.csv"
 

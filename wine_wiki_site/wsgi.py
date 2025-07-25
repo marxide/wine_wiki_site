@@ -11,6 +11,15 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wine_wiki_site.settings")
+from dotenv import load_dotenv
+from pathlib import Path
+
+# BASE_DIR = Path(__file__).resolve().parent.parent
+# project_folder = os.path.expanduser(
+#     BASE_DIR / "wine_wiki_site"
+# )  # adjust as appropriate
+# load_dotenv(os.path.join(project_folder, ".env"))
+
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "wine_wiki_site.dev_settings")
 
 application = get_wsgi_application()

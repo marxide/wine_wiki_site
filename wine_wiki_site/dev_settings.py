@@ -25,9 +25,7 @@ SECRET_KEY = "django-insecure-)2oei_3870+#r()w7_h93*+zto-gr8rg7@(ww6mll&@tma!at8
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = [
-"winewiki.pythonanywhere.com"
-        ]
+ALLOWED_HOSTS = ["winewiki.pythonanywhere.com", "127.0.0.1"]
 
 
 # Application definition
@@ -119,6 +117,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 import os
+
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 

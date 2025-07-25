@@ -13,9 +13,9 @@
           <h3 class="wine_list_h3">{{ subcat|title }}</h3>
             {% for wine in wines %}
           <div class="wine_list_row" onclick='window.location="{% url "wine-wiki:wine" wine.pk %}"'>
-                <div class="wine_list_vintage">{{wine.vintage|upper}} </div>
+                <div class="wine_list_vintage">{{wine.vintage|default_if_none:""|upper}} </div>
                 <div class="wine_list_wine_name_producer";> {% if wine.producer %} {{wine.producer|title}}{%endif %}{%if wine.cuvee_name%}, '{{wine.cuvee_name|title}}'{% endif %} {%if wine.variety %}, {{wine.variety|title}} {% endif %}</div>
-                <div class="wine_list_region"> {% if wine.subregion %}{{wine.subregion|title}}{% if wine.subregion and wine.region %}, {% endif %}{% endif %}{{wine.region|title}}</div>
+                <div class="wine_list_region"> {% if wine.subregion %}{{wine.subregion|default_if_none:""|title}}{% if wine.subregion and wine.region %}, {% endif %}{% endif %}{{wine.region|default_if_none:""|title}}{% if wine.state %}, {{wine.state|default_if_none:""|title}}{% endif %}</div>
                 <div class="wine_list_volume"> {% comment volume col %} {%endcomment %}</div>
                 <div class="wine_list_price" style="">{{wine.price}}</div>
             </div>

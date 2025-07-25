@@ -28,7 +28,9 @@ class WineView(generic.DetailView):
             wine.variety,
         ]
 
-        context["wine_title"] = ", ".join([str(x) for x in title_fields if str(x)])
+        context["wine_title"] = ", ".join(
+            [str(x) for x in title_fields if x is not None]
+        )
 
         return context
 
@@ -41,7 +43,9 @@ class WineListView(generic.ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
-        wine_list = Wine.objects.all().order_by("section", "subsection")
+        wine_list = Wine.objects.all().order_by(
+            "section__order", "subsection__order", "line_num_tot"
+        )
 
         grouped = defaultdict(lambda: defaultdict(list))
 

@@ -30,7 +30,7 @@ class Section(models.Model):
         return str(self.section)
 
 
-class Subsection(models.Model):
+class SubSection(models.Model):
     """
     mixin class for wine list subcategories
     """
@@ -43,6 +43,20 @@ class Subsection(models.Model):
         return str(self.subsection)
 
 
+class SubSubSection(models.Model):
+    """
+    mixin class for wine list subcategories
+    """
+
+    section = models.ForeignKey(Section, on_delete=models.PROTECT)
+    subsection = models.ForeignKey(SubSection, on_delete=models.PROTECT)
+    subsubsection = models.CharField(max_length=100)
+    order = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.section=} {self.subsubsection=} {self.subsubsection=}"
+
+
 class Wine(models.Model):
     """base class representing a wine object"""
 
@@ -52,9 +66,9 @@ class Wine(models.Model):
     page_num = models.IntegerField(null=False, default=-1)
     page_line_num = models.IntegerField(null=False, default=-1)
     section = models.ForeignKey(Section, on_delete=models.PROTECT, null=True)
-    subsection = models.ForeignKey(Subsection, on_delete=models.PROTECT, null=True)
-    subsubsection = models.CharField(
-        null=False, default=""
+    subsection = models.ForeignKey(SubSection, on_delete=models.PROTECT, null=True)
+    subsubsection = models.ForeignKey(
+        SubSubSection, null=True, default="", on_delete=models.PROTECT
     )  # ' ' implies it requires assignment.
     vintage = models.CharField(max_length=4, blank=True, null=True, default=None)
     merged_text_ext = models.TextField(

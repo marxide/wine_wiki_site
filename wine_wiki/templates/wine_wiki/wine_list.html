@@ -1,34 +1,38 @@
 {% extends "wine_wiki/base.html" %}
-
 {% block content %}
-
-<h1>Wine List</h1>
-
-<div class="wine-list-container">
-  <div class="wine-list">
-
-  {% for group, cat in grouped_wines.items %}
-    <h2 class="wine_list_h2">{{ group|title }}</h2>
-        {% for subcat, wines in cat.items %}
-          <h3 class="wine_list_h3">{{ subcat|title }}</h3>
-            {% for wine in wines %}
-          <div class="wine_list_row" onclick='window.location="{% url "wine-wiki:wine" wine.pk %}"'>
-                <div class="wine_list_vintage">{{wine.vintage|default_if_none:""|upper}} </div>
-                <div class="wine_list_wine_name_producer";> {% if wine.producer %} {{wine.producer|title}}{%endif %}{%if wine.cuvee_name%}, '{{wine.cuvee_name|title}}'{% endif %} {%if wine.variety %}, {{wine.variety|title}} {% endif %}</div>
-                <div class="wine_list_region"> {% if wine.subregion %}{{wine.subregion|default_if_none:""|title}}{% if wine.subregion and wine.region %}, {% endif %}{% endif %}{{wine.region|default_if_none:""|title}}{% if wine.state %}, {{wine.state|default_if_none:""|title}}{% endif %}</div>
-                <div class="wine_list_volume"> {% comment volume col %} {%endcomment %}</div>
-                <div class="wine_list_price" style="">{{wine.price}}</div>
-            </div>
+    <h1>Wine List</h1>
+    <div class="wine-list-container">
+        <div class="wine-list">
+            {% for group, cat in grouped_wines.items %}
+                <h2 class="wine_list_h2">{{ group|title }}</h2>
+                {% for subcat, wines in cat.items %}
+                    <h3 class="wine_list_h3">{{ subcat|title }}</h3>
+                    {% for wine in wines %}
+                        <div class="wine_list_row"
+                             onclick='window.location="{% url "wine-wiki:wine" wine.pk %}"'>
+                            <div class="wine_list_vintage">{{ wine.vintage|default_if_none:""|upper }}</div>
+                            <!-- -->
+                            <div class="wine_list_wine_name_producer";>
+                                {{ wine.producer|default_if_none:""|title }}
+                                {{ wine.cuvee_name|default_if_none:""|title }}
+                                {{ wine.variety|default_if_none:""|title }}
+                            </div>
+                            <div class="wine_list_region">
+                                {{ wine.subregion|default_if_none:""|title }}
+                                {{ wine.region|default_if_none:""|title }}
+                                {{ wine.state|default_if_none:""|title }}
+                            </div>
+                            <div class="wine_list_volume">{% comment volume col %} {%endcomment %}</div>
+                            <div class="wine_list_price" style="">{{ wine.price }}</div>
+                        </div>
+                    {% endfor %}
+                    <br>
+                {% empty %}
+                    no wines in the category
+                {% endfor %}
+            {% empty %}
+                no wines in grouped_wines
             {% endfor %}
-    <br>
-          {% empty %}
-          no wines in the category
-          {%endfor%}
-    {% empty %}
-    no wines in grouped_wines
-  {%endfor%}
-
-  </div>
-
-</div>
+        </div>
+    </div>
 {% endblock %}

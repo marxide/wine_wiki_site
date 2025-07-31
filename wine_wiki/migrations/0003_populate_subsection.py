@@ -3,12 +3,12 @@
 from django.db import migrations
 from pathlib import Path
 import csv
+import os
 
 
 def import_subsection(apps, schema_editor):
-    exported_data_path = Path(
-        "/home/winewiki/wine_list_db"
-    )
+    exported_data_path = Path(os.environ["WINE_LIST_DATA_DIR"])
+
     subsection_path = exported_data_path / "subsection.csv"
 
     SubSection = apps.get_model("wine_wiki", "SubSection")

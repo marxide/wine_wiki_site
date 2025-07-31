@@ -1,0 +1,30 @@
+section,subsection,subsection_order
+sparkling wine,champagne,0
+sparkling wine,australia,1
+white wine,riesling,2
+white wine,semillon and blends,3
+white wine,pinot gris,4
+white wine,sauvignon blanc and blends,5
+white wine,pinot blanc,6
+white wine,chenin blanc,7
+white wine,fiano,8
+white wine,viognier,9
+white wine,white varietals,10
+white wine,chardonnay,11
+"orange, rosé and chilled red wine",skin contact and amphora,12
+"orange, rosé and chilled red wine",rosé,13
+"orange, rosé and chilled red wine",chilled red wine,14
+red wine,pinot noir,15
+red wine,nebbiolo,16
+red wine,sangiovese,17
+red wine,gamay,18
+red wine,red varietals,19
+red wine,cabernet franc,20
+red wine,cabernet sauvignon and blends,21
+red wine,merlot and blends,22
+red wine,grenache and blends,23
+red wine,"tempranillo, touriga nacional and blends",24
+red wine,shiraz and blends,25
+dessert wine,sweet wine,26
+dessert wine,fortified,27
+dessert wine,"sherry, spain",28

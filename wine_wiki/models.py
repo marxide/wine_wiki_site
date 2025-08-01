@@ -67,9 +67,7 @@ class Wine(models.Model):
     page_line_num = models.IntegerField(null=False, default=-1)
     section = models.ForeignKey(Section, on_delete=models.PROTECT, null=True)
     subsection = models.ForeignKey(SubSection, on_delete=models.PROTECT, null=True)
-    subsubsection = models.ForeignKey(
-        SubSubSection, null=True, default="", on_delete=models.PROTECT
-    )  # ' ' implies it requires assignment.
+    subsubsection = models.CharField(default="")
     vintage = models.CharField(max_length=4, blank=True, null=True, default=None)
     merged_text_ext = models.TextField(
         blank=True,

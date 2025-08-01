@@ -13,3 +13,4 @@ wheels/
 db.sqlite3
 .env
 static/
+db.sqlite3.bak

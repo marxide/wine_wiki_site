@@ -1,0 +1,19 @@
+section,subsection,subsubsection,subsubsection_order,subsubsection_id
+sparkling wine,champagne,côte des bar (aube),0,1
+sparkling wine,champagne,côte des blancs,1,2
+sparkling wine,champagne,côte de sézanne,2,3
+sparkling wine,champagne,montagne de reims,3,4
+sparkling wine,champagne,vallée de la marne,4,5
+white wine,riesling,australia,5,6
+white wine,riesling,new zealand,6,7
+white wine,riesling,france,7,8
+white wine,riesling,austria,8,9
+white wine,riesling,germany,9,10
+white wine,sauvignon blanc and blends,usa,10,11
+white wine,pinot blanc,rest of the world,11,12
+white wine,chenin blanc,south africa,12,13
+white wine,white varietals,everywhere and anywhere,13,14
+red wine,nebbiolo,italy,14,15
+dessert wine,sweet wine,rest of world,15,16
+dessert wine,fortified,sweet,16,17
+dessert wine,"sherry, spain",dry,17,18

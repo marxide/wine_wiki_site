@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = "django-insecure-)2oei_3870+#r()w7_h93*+zto-gr8rg7@(ww6mll&@tma!at8"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ["winewiki.pythonanywhere.com"]
 

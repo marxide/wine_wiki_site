@@ -105,7 +105,13 @@ class Wine(models.Model):
     volume = models.CharField(max_length=100, blank=True, null=True, default=None)
     series = models.CharField(max_length=100, blank=True, null=True, default=None)
     bpos_key = models.CharField(max_length=100, blank=True, null=True, default=None)
-    description = models.TextField(blank=True, null=True, default=None)
+    description = models.TextField(
+        blank=True,
+        null=True,
+        default=None,
+        help_text="All unstructured information about the wine. Supports Markdown formatting (see <a href=https://www.markdownguide.org/>guide</a>). Description is a 2nd level header field within the page, try to use third level and lower if including headers.",
+    )
+
     is_published = models.BooleanField(default=False, verbose_name="Publish?")
     created_on = models.DateTimeField(
         auto_now_add=True

@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.views import generic
 from .models import Producer, Wine
 from collections import defaultdict
-from django.urls import reverse_lazy
+from django.urls import reverse, reverse_lazy
 from .forms import UserRegisterForm
 from django.views.generic.edit import CreateView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -64,12 +64,17 @@ class WineUpdateView(generic.UpdateView):
     fields = "__all__"
     template_name = "wine_wiki/wine_update.html"
 
+    def get_success_url(self):
+        return reverse("wine_wiki:wine", kwargs={"pk": self.object.pk})
+
 
 class WineCreateView(generic.CreateView):
     model = Wine
     fields = "__all__"
     template_name = "wine_wiki/wine_create.html"
-    success_url = reverse_lazy("wine_wiki:home")
+
+    def get_success_url(self):
+        return reverse("wine_wiki:wine", kwargs={"pk": self.object.pk})
 
     def form_valid(self, form):
         form.instance.user = self.request.user

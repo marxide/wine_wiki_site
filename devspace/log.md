@@ -139,8 +139,16 @@ Summary:
 
 - [x] create dev branch
 - [x] reset prod (main) to same as prod env.
-- [ ] bisect dev branch to seperate non-migation changes from migration changes
+- [x] bisect dev branch to seperate non-migation changes from migration changes
 - [ ] test non-migration branch and push successful changes to prod
 - [ ] leave other changes on migration branch.
 
 What are the changes to be bisected? What is the strategy?
+
+## Wine List Development - Lost Some Logs
+
+2025-08-02 15:04
+
+Lost some logs when checking out main from dev. didnt know that could happen. Anyway, setup of the dev/main branches is complete and the migration commits separated out. Now need to move the commits into main from dev and test. The question is what is the best way to do that, rebase or merge?
+
+Rebase is used to make main look like its built on top of dev, rewriting the history. dont want that. merge or cherry-pick. Cherry-pick for subsets, merge for everything. We can test it by branching main, cherrypicking then rebasing.

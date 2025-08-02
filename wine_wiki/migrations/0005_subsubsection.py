@@ -5,20 +5,39 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('wine_wiki', '0004_populate_wines'),
+        ("wine_wiki", "0004_populate_wines"),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='SubSubSection',
+            name="SubSubSection",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('subsubsection', models.CharField(max_length=100)),
-                ('order', models.IntegerField()),
-                ('section', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='wine_wiki.section')),
-                ('subsection', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='wine_wiki.subsection')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("subsubsection", models.CharField(max_length=100)),
+                ("order", models.IntegerField()),
+                (
+                    "section",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="wine_wiki.section",
+                    ),
+                ),
+                (
+                    "subsection",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="wine_wiki.subsection",
+                    ),
+                ),
             ],
         ),
     ]

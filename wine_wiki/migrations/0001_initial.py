@@ -5,72 +5,202 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     initial = True
 
-    dependencies = [
-    ]
+    dependencies = []
 
     operations = [
         migrations.CreateModel(
-            name='Producer',
+            name="Producer",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('producer_name', models.CharField(max_length=100)),
-                ('region', models.CharField(max_length=100)),
-                ('description', models.TextField(help_text='Description of the producer')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("producer_name", models.CharField(max_length=100)),
+                ("region", models.CharField(max_length=100)),
+                (
+                    "description",
+                    models.TextField(help_text="Description of the producer"),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Section',
+            name="Section",
             fields=[
-                ('order', models.IntegerField(unique=True)),
-                ('section', models.CharField(max_length=100, primary_key=True, serialize=False)),
+                ("order", models.IntegerField(unique=True)),
+                (
+                    "section",
+                    models.CharField(max_length=100, primary_key=True, serialize=False),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Subsection',
+            name="Subsection",
             fields=[
-                ('subsection', models.CharField(max_length=100, primary_key=True, serialize=False)),
-                ('order', models.IntegerField()),
-                ('section', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='wine_wiki.section')),
+                (
+                    "subsection",
+                    models.CharField(max_length=100, primary_key=True, serialize=False),
+                ),
+                ("order", models.IntegerField()),
+                (
+                    "section",
+                    models.ForeignKey(
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="wine_wiki.section",
+                    ),
+                ),
             ],
         ),
         migrations.CreateModel(
-            name='Wine',
+            name="Wine",
             fields=[
-                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
-                ('line_num_tot', models.IntegerField(default=-1, null=True)),
-                ('page_num', models.IntegerField(default=-1)),
-                ('page_line_num', models.IntegerField(default=-1)),
-                ('subsubsection', models.CharField(default='')),
-                ('vintage', models.CharField(blank=True, default=None, max_length=4, null=True)),
-                ('merged_text_ext', models.TextField(blank=True, default=None, null=True)),
-                ('base_year', models.IntegerField(blank=True, default=None, null=True)),
-                ('cuvee_name', models.TextField(blank=True, default=None, null=True)),
-                ('disgorg_year', models.IntegerField(blank=True, default=None, null=True)),
-                ('price', models.IntegerField()),
-                ('merged_text', models.TextField(blank=True, default=None, null=True)),
-                ('producer', models.CharField(blank=True, default=None, max_length=100, null=True)),
-                ('dryness', models.CharField(blank=True, default=None, max_length=100, null=True)),
-                ('country', models.CharField(blank=True, default=None, max_length=100, null=True)),
-                ('state', models.CharField(blank=True, default=None, max_length=100, null=True)),
-                ('region', models.CharField(blank=True, default=None, max_length=100, null=True)),
-                ('subregion', models.CharField(blank=True, default=None, max_length=100, null=True)),
-                ('commune', models.CharField(blank=True, default=None, max_length=100, null=True)),
-                ('vineyard', models.CharField(blank=True, default=None, max_length=100, null=True)),
-                ('wine_name', models.CharField(blank=True, default=None, max_length=100, null=True)),
-                ('variety', models.CharField(blank=True, default=None, max_length=100, null=True)),
-                ('style', models.CharField(blank=True, default=None, max_length=100, null=True)),
-                ('classification', models.CharField(blank=True, default=None, max_length=100, null=True)),
-                ('volume', models.CharField(blank=True, default=None, max_length=100, null=True)),
-                ('series', models.CharField(blank=True, default=None, max_length=100, null=True)),
-                ('bpos_key', models.CharField(blank=True, default=None, max_length=100, null=True)),
-                ('description', models.TextField(blank=True, default=None, null=True)),
-                ('is_published', models.BooleanField(default=False, verbose_name='Publish?')),
-                ('created_on', models.DateTimeField(auto_now_add=True)),
-                ('section', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, to='wine_wiki.section')),
-                ('subsection', models.ForeignKey(null=True, on_delete=django.db.models.deletion.PROTECT, to='wine_wiki.subsection')),
+                (
+                    "id",
+                    models.BigAutoField(
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name="ID",
+                    ),
+                ),
+                ("line_num_tot", models.IntegerField(default=-1, null=True)),
+                ("page_num", models.IntegerField(default=-1)),
+                ("page_line_num", models.IntegerField(default=-1)),
+                ("subsubsection", models.CharField(default="")),
+                (
+                    "vintage",
+                    models.CharField(blank=True, default=None, max_length=4, null=True),
+                ),
+                (
+                    "merged_text_ext",
+                    models.TextField(blank=True, default=None, null=True),
+                ),
+                ("base_year", models.IntegerField(blank=True, default=None, null=True)),
+                ("cuvee_name", models.TextField(blank=True, default=None, null=True)),
+                (
+                    "disgorg_year",
+                    models.IntegerField(blank=True, default=None, null=True),
+                ),
+                ("price", models.IntegerField()),
+                ("merged_text", models.TextField(blank=True, default=None, null=True)),
+                (
+                    "producer",
+                    models.CharField(
+                        blank=True, default=None, max_length=100, null=True
+                    ),
+                ),
+                (
+                    "dryness",
+                    models.CharField(
+                        blank=True, default=None, max_length=100, null=True
+                    ),
+                ),
+                (
+                    "country",
+                    models.CharField(
+                        blank=True, default=None, max_length=100, null=True
+                    ),
+                ),
+                (
+                    "state",
+                    models.CharField(
+                        blank=True, default=None, max_length=100, null=True
+                    ),
+                ),
+                (
+                    "region",
+                    models.CharField(
+                        blank=True, default=None, max_length=100, null=True
+                    ),
+                ),
+                (
+                    "subregion",
+                    models.CharField(
+                        blank=True, default=None, max_length=100, null=True
+                    ),
+                ),
+                (
+                    "commune",
+                    models.CharField(
+                        blank=True, default=None, max_length=100, null=True
+                    ),
+                ),
+                (
+                    "vineyard",
+                    models.CharField(
+                        blank=True, default=None, max_length=100, null=True
+                    ),
+                ),
+                (
+                    "wine_name",
+                    models.CharField(
+                        blank=True, default=None, max_length=100, null=True
+                    ),
+                ),
+                (
+                    "variety",
+                    models.CharField(
+                        blank=True, default=None, max_length=100, null=True
+                    ),
+                ),
+                (
+                    "style",
+                    models.CharField(
+                        blank=True, default=None, max_length=100, null=True
+                    ),
+                ),
+                (
+                    "classification",
+                    models.CharField(
+                        blank=True, default=None, max_length=100, null=True
+                    ),
+                ),
+                (
+                    "volume",
+                    models.CharField(
+                        blank=True, default=None, max_length=100, null=True
+                    ),
+                ),
+                (
+                    "series",
+                    models.CharField(
+                        blank=True, default=None, max_length=100, null=True
+                    ),
+                ),
+                (
+                    "bpos_key",
+                    models.CharField(
+                        blank=True, default=None, max_length=100, null=True
+                    ),
+                ),
+                ("description", models.TextField(blank=True, default=None, null=True)),
+                (
+                    "is_published",
+                    models.BooleanField(default=False, verbose_name="Publish?"),
+                ),
+                ("created_on", models.DateTimeField(auto_now_add=True)),
+                (
+                    "section",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="wine_wiki.section",
+                    ),
+                ),
+                (
+                    "subsection",
+                    models.ForeignKey(
+                        null=True,
+                        on_delete=django.db.models.deletion.PROTECT,
+                        to="wine_wiki.subsection",
+                    ),
+                ),
             ],
         ),
     ]

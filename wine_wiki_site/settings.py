@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     "django_extensions",
     "wine_wiki.apps.WineWikiConfig",
     "wine_wiki_site.apps.WineWikiSiteConfig",
+    "dbbackup",
 ]
 
 MIDDLEWARE = [
@@ -127,3 +128,6 @@ STATIC_ROOT = os.path.join(BASE_DIR, "static")
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "/"  # new
+
+DBBACKUP_STORAGE = "django.core.files.storage.FileSystemStorage"
+DBBACKUP_STORAGE_OPTIONS = {"location": BASE_DIR / "backup"}

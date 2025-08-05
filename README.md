@@ -82,3 +82,7 @@ As of 2025-05-29
 ### User Management
 
 See the following: <https://learndjango.com/tutorials/django-login-and-logout-tutorial> for basic setup of user accounts.
+
+### Backup
+
+Database backup is managed with [django-dbbackup](https://pypi.org/project/django-dbbackup/). It is executed with `python manage.py dbbackup` which creates a backup in the dir specified by `DBBACKUP_STORAGE_OPTIONS` in the site settings.py. Restoration from backup is achieved by `python manage.py dbrestore`. See [commands](https://django-dbbackup.readthedocs.io/en/stable/commands.html) for more detail.

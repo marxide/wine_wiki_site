@@ -117,6 +117,10 @@ class Wine(models.Model):
         auto_now_add=True
     )  # date added to website database
 
+    modification_on = models.DateTimeField(
+        auto_now=True
+    )  # date added to website database
+
     """represents a wine wiki wine"""
 
     def get_absolute_url(self):

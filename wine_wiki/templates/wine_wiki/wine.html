@@ -4,6 +4,7 @@
     <div class="wine-container">
         <div class="wine-content">
             <h1>{{ wine_title }}</h1>
+        <p style="font-size: 0.75em"><em>Last modification: {{ wine.modification_on }} by {{ wine.last_modification_by }}</em></p>
             <h2>Description</h2>
             {{ wine.description | markdown | safe }}
             <h2>Links</h2>

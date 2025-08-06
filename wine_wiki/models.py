@@ -121,6 +121,11 @@ class Wine(models.Model):
         auto_now=True
     )  # date added to website database
 
+    # add modifier name
+    # update wines with already existing descriptions to map the author to the description
+
+    last_modification_by = models.CharField(max_length=50, null=True)
+
     """represents a wine wiki wine"""
 
     def get_absolute_url(self):

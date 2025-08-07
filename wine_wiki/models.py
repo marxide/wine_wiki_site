@@ -9,13 +9,10 @@ class Producer(models.Model):
     """represents a producer"""
 
     producer_name = models.CharField(max_length=100)
-    region = models.CharField(max_length=100)
-    description = models.TextField(help_text="Description of the producer")
-
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.producer_name)
-        super(Producer, self).save(*args, **kwargs)
+    region = models.CharField(max_length=100, default="", blank=True)
+    description = models.TextField(
+        help_text="Description of the producer", default="", blank=True
+    )
 
 
 class Section(models.Model):

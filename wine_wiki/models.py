@@ -8,7 +8,7 @@ from django.urls import reverse
 class Producer(models.Model):
     """represents a producer"""
 
-    name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100, unique=True)
     region = models.CharField(max_length=100, default="", blank=True)
     description = models.TextField(
         help_text="Description of the producer", default="", blank=True

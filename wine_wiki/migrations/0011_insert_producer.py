@@ -2,8 +2,6 @@
 
 from django.db import migrations, transaction
 
-from wine_wiki.models import Producer
-
 
 def populate_producer(apps, schema_editor):
     """

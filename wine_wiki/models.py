@@ -85,7 +85,7 @@ class Wine(models.Model):
         null=True,
         default=None,
     )  # the initial extracted text, useful for downstream debugging
-    producer = models.CharField(max_length=100, blank=True, null=True, default=None)
+    producer = models.ForeignKey(to=Producer, null=True, on_delete=models.PROTECT)
     dryness = models.CharField(max_length=100, blank=True, null=True, default=None)
     country = models.CharField(max_length=100, blank=True, null=True, default=None)
     state = models.CharField(max_length=100, blank=True, null=True, default=None)

@@ -82,10 +82,39 @@ class WineCreateView(generic.CreateView):
         return super(WineCreateView, self).form_valid(form)
 
 
+class ProducerCreateView(generic.CreateView):
+    model = Producer
+    fields = "__all__"
+    template_name = "wine_wiki/prod_create.html"
+
+    def get_success_url(self):
+        return reverse("wine_wiki:producer", kwargs={"pk": self.object.pk})
+
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        messages.success(self.request, "The producer was created successfully.")
+        return super(ProducerCreateView, self).form_valid(form)
+
+
+class ProducerUpdateView(generic.UpdateView):
+    model = Producer
+    fields = "__all__"
+    template_name = "wine_wiki/prod_update.html"
+
+    def get_success_url(self):
+        return reverse("wine_wiki:producer", kwargs={"pk": self.object.pk})
+
+
 class WineDeleteView(generic.DeleteView):
     model = Wine
     success_url = reverse_lazy("wine-wiki:wine-list")
     template_name = "wine_wiki/wine-delete.html"
+
+
+class ProducerDeleteView(generic.DeleteView):
+    model = Producer
+    success_url = reverse_lazy("wine-wiki:producer-list")
+    template_name = "wine_wiki/prod_delete.html"
 
 
 # class SignUpView(SuccessMessageMixin, CreateView):

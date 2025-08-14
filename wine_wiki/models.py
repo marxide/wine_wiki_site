@@ -16,7 +16,7 @@ class Producer(models.Model):
     )
 
     def get_absolute_url(self):
-        return reverse("wine_wiki:producer", kwargs={"pk": self.id})
+        return reverse("wine_wiki:producer", kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.name
@@ -133,7 +133,7 @@ class Wine(models.Model):
     """represents a wine wiki wine"""
 
     def get_absolute_url(self):
-        return reverse("wine_wiki:wine", kwargs={"pk": self.id})
+        return reverse("wine_wiki:wine", kwargs={"pk": self.pk})
 
     def __str__(self):
         disp_str = ", ".join(

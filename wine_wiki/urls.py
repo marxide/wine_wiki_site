@@ -41,12 +41,23 @@ urlpatterns = [
     path("wine-list/", view=views.WineListView.as_view(), name="wine-list"),
     path("wine/<int:pk>/", view=views.WineView.as_view(), name="wine"),
     path("update/<int:pk>/", view=views.WineUpdateView.as_view(), name="wine-update"),
+    path(
+        "update-producer/<int:pk>/",
+        view=views.ProducerUpdateView.as_view(),
+        name="prod-update",
+    ),
     path("admin/", admin.site.urls),
     path("wine-create/", view=views.WineCreateView.as_view(), name="wine-create"),
+    path("prod-create/", view=views.ProducerCreateView.as_view(), name="prod-create"),
     path(
         "wine-delete/<int:pk>/",
         view=views.WineDeleteView.as_view(),
         name="wine-delete",
+    ),
+    path(
+        "prod-delete/<int:pk>/",
+        view=views.ProducerDeleteView.as_view(),
+        name="prod-delete",
     ),
     path("producer-list/", view=views.ProducerListView.as_view(), name="producer-list"),
     path("producer/<int:pk>/", view=views.ProducerView.as_view(), name="producer"),

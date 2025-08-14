@@ -128,3 +128,20 @@ div.wine_list_row {
   flex-direction: column;
   height: 100%;
 }
+
+
+.prod-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.prod-content {
+  flex: 1;
+  overflow: auto;
+}
+
+.prod-meta {
+  border-top: 1px solid black;
+  padding: 0.5em;
+}

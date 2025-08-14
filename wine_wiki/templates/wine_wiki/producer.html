@@ -1,9 +1,13 @@
 {% extends "wine_wiki/base.html" %}
 {% load markdown_extras %}
 {% block content %}
-    <div>
+    <div class="prod-container">
+      <div class="prod-content">
         <h1>{{ producer.name|title }}</h1>
         {{ producer.region }}
+
+        <h2> Description </h2>
+        {{ producer.description | markdown | safe }}
         <h2>Wines</h2>
         <ul>
             {% for wine in producer.wine_set.all %}
@@ -14,5 +18,10 @@
                 <em style='margin-left: 40px'>No wines yet.</em>
             {% endfor %}
         </ul>
+</div>
+      <div class="prod-meta">
+          <a class="button" href="{% url 'wine-wiki:prod-update' producer.id %}">Edit Producer</a>
+          <a class="button" href="{% url 'wine-wiki:prod-delete' producer.id %}">Delete Producer</a>
+      </div>
     </div>
 {% endblock %}

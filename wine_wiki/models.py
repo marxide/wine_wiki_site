@@ -1,3 +1,4 @@
+from django.contrib.admin import display
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import default, slugify
@@ -132,10 +133,24 @@ class Wine(models.Model):
     """represents a wine wiki wine"""
 
     def get_absolute_url(self):
-        return reverse("wine", kwargs={"pk": self.pk})
+        return reverse("wine_wiki:wine", kwargs={"pk": self.id})
 
     def __str__(self):
-        return f"{self.vintage} {self.wine_name} {self.region} {self.subregion}"
+        disp_str = ", ".join(
+            filter(
+                None,
+                [
+                    self.vintage,
+                    str(self.producer),
+                    self.cuvee_name,
+                    self.variety,
+                    self.subregion,
+                    self.region,
+                    self.state,
+                ],
+            )
+        )
+        return disp_str
 
     def winesearcher_str(self):
         """assemble a string that matches winesearcher"""

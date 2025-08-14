@@ -14,6 +14,12 @@ class Producer(models.Model):
         help_text="Description of the producer", default="", blank=True
     )
 
+    def get_absolute_url(self):
+        return reverse("wine_wiki:producer", kwargs={"pk": self.id})
+
+    def __str__(self):
+        return self.name
+
 
 class Section(models.Model):
     """

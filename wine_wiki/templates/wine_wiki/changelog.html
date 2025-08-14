@@ -1,9 +1,18 @@
-{% extends 'wine_wiki/base.html' %} {% block content %}
-<h1>Change Log</h1>
-<ul>
-    <li><b>2025-08-14:</b> Adds Producer List (link can be found in home), invidiual producer pagess, link to producer from a wine and list of wines under a producer page.</li>
-    <li><b>2025-08-06:</b> Adds "last_modification_by" field to wine to record last modification. While optional I would highly appreciate its use. Downtrack this will be tied to user accounts. The last modification date and user who last modified i.e. "last_modification_by" are displayed on the top of an article page, such as a wine.</li>
-    <li><b>2025-08-03:</b> Adds markdown support in Description and help text, fixed create and edit wine path result error.</li>
-    <li><b>2025-08-03:</b> Add this Change Log.</li>
-</ul>
+{% extends 'wine_wiki/base.html' %}
+{% block content %}
+    <h1>Change Log</h1>
+    <ul>
+        <li>
+            <b>2025-08-14:</b> Adds Producer List (link can be found in home), invidiual producer pagess, link to producer from a wine and list of wines under a producer page.
+        </li>
+        <li>
+            <b>2025-08-06:</b> Adds "last_modification_by" field to wine to record last modification. While optional I would highly appreciate its use. Downtrack this will be tied to user accounts. The last modification date and user who last modified i.e. "last_modification_by" are displayed on the top of an article page, such as a wine.
+        </li>
+        <li>
+            <b>2025-08-03:</b> Adds markdown support in Description and help text, fixed create and edit wine path result error.
+        </li>
+        <li>
+            <b>2025-08-03:</b> Add this Change Log.
+        </li>
+    </ul>
 {% endblock %}

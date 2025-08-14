@@ -22,7 +22,9 @@
             </ul>
             <h2>Related</h2>
             <ul>
-                <li>Producer: {{ wine.producer }}</li>
+                <li>
+            Producer: <a href="{{ wine.producer.get_absolute_url }}">{{ wine.producer.name|title }}</a></li>
+
                 <li>Vintage: {{ wine.vintage }}</li>
                 <li>Region: {{ wine.region }}</li>
                 <li>Subregion: {{ wine.subregion }}</li>

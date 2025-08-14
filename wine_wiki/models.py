@@ -22,6 +22,10 @@ class Producer(models.Model):
         return self.name
 
 
+class Variety(models.Model):
+    name = models.CharField(max_length=100, unique=True)
+
+
 class Section(models.Model):
     """
     Represents the wine list structure
@@ -101,7 +105,7 @@ class Wine(models.Model):
     commune = models.CharField(max_length=100, blank=True, null=True, default=None)
     vineyard = models.CharField(max_length=100, blank=True, null=True, default=None)
     wine_name = models.CharField(max_length=100, blank=True, null=True, default=None)
-    variety = models.CharField(max_length=100, blank=True, null=True, default=None)
+    variety = models.ForeignKey(to=Variety, default="", on_delete=models.PROTECT)
     style = models.CharField(max_length=100, blank=True, null=True, default=None)
     classification = models.CharField(
         max_length=100, blank=True, null=True, default=None

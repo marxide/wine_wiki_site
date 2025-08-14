@@ -1,3 +1,4 @@
+from django.contrib.admin import display
 from django.db import models
 from django.contrib.auth.models import User
 from django.template.defaultfilters import default, slugify
@@ -8,14 +9,17 @@ from django.urls import reverse
 class Producer(models.Model):
     """represents a producer"""
 
-    producer_name = models.CharField(max_length=100)
-    region = models.CharField(max_length=100)
-    description = models.TextField(help_text="Description of the producer")
+    name = models.CharField(max_length=100, unique=True)
+    region = models.CharField(max_length=100, default="", blank=True)
+    description = models.TextField(
+        help_text="Description of the producer", default="", blank=True
+    )
 
-    def save(self, *args, **kwargs):
-        if not self.slug:
-            self.slug = slugify(self.producer_name)
-        super(Producer, self).save(*args, **kwargs)
+    def get_absolute_url(self):
+        return reverse("wine_wiki:producer", kwargs={"pk": self.id})
+
+    def __str__(self):
+        return self.name
 
 
 class Section(models.Model):
@@ -88,7 +92,7 @@ class Wine(models.Model):
         null=True,
         default=None,
     )  # the initial extracted text, useful for downstream debugging
-    producer = models.CharField(max_length=100, blank=True, null=True, default=None)
+    producer = models.ForeignKey(to=Producer, null=True, on_delete=models.PROTECT)
     dryness = models.CharField(max_length=100, blank=True, null=True, default=None)
     country = models.CharField(max_length=100, blank=True, null=True, default=None)
     state = models.CharField(max_length=100, blank=True, null=True, default=None)
@@ -129,10 +133,24 @@ class Wine(models.Model):
     """represents a wine wiki wine"""
 
     def get_absolute_url(self):
-        return reverse("wine", kwargs={"pk": self.pk})
+        return reverse("wine_wiki:wine", kwargs={"pk": self.id})
 
     def __str__(self):
-        return f"{self.vintage} {self.wine_name} {self.region} {self.subregion}"
+        disp_str = ", ".join(
+            filter(
+                None,
+                [
+                    self.vintage,
+                    str(self.producer),
+                    self.cuvee_name,
+                    self.variety,
+                    self.subregion,
+                    self.region,
+                    self.state,
+                ],
+            )
+        )
+        return disp_str
 
     def winesearcher_str(self):
         """assemble a string that matches winesearcher"""

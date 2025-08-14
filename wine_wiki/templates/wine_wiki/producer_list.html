@@ -1,0 +1,14 @@
+{% extends "wine_wiki/base.html" %}
+{% block content %}
+    <h1>Producer List</h1>
+    <div>
+      <ul>
+      {% for producer in object_list %}
+      <li><a href="{{ producer.get_absolute_url }}">{{ producer.name|title }}</a></li>
+      {% empty %}
+      <p>No producers found.</p>
+      {% endfor %}
+      </ul>
+
+    </div>
+{% endblock %}

@@ -96,5 +96,16 @@ class WineDeleteView(generic.DeleteView):
 #     template_name = "wine_wiki/registration/login.html"
 #     success_url = reverse_lazy("login")
 #     form_class = UserRegisterForm
-#     success_message = "Your profile was created successfully"
+#     success_message = "Your profile was created successfully"j
 # views.py
+
+
+class ProducerView(generic.DetailView):
+    model = Producer
+    template_name = "wine_wiki/producer.html"
+    context_object_name = "producer"
+
+
+class ProducerListView(generic.ListView):
+    model = Producer
+    template_name = "wine_wiki/producer_list.html"

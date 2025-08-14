@@ -2,9 +2,16 @@
 {% load markdown_extras %}
 {% block content %}
   <div>
-    {{ producer.name }}
-
+    <h1>{{ producer.name|title }}</h1>
     {{ producer.region }}
+    <h2>Wines</h2>
+    <ul>
+    {% for wine in producer.wine_set.all %}
+      <li><a style="text-decoration: none" href="{{ wine.get_absolute_url }}"> {{ wine|title }} </a></li>
+    {% empty %}
+    <em style='margin-left: 40px'>No wines yet.</em>
+    {% endfor %}
+    </ul>
 
 
     </div>

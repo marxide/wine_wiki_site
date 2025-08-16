@@ -30,7 +30,9 @@
                 <li>Vintage: {{ wine.vintage }}</li>
                 <li>Region: {{ wine.region }}</li>
                 <li>Subregion: {{ wine.subregion }}</li>
-                <li>Variety: {{ wine.variety }}</li>
+                <li>
+                    Variety: <a href="{{ wine.variety.get_absolute_url }}">{{ wine.variety.name|title }}</a>
+                </li>
             </ul>
         </div>
     </div>

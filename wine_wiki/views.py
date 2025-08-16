@@ -1,7 +1,7 @@
 from django.http import HttpResponse
 from django.shortcuts import render
 from django.views import generic
-from .models import Producer, Wine
+from .models import Producer, Wine, Variety
 from collections import defaultdict
 from django.urls import reverse, reverse_lazy
 from .forms import UserRegisterForm
@@ -138,3 +138,19 @@ class ProducerView(generic.DetailView):
 class ProducerListView(generic.ListView):
     model = Producer
     template_name = "wine_wiki/producer_list.html"
+
+
+class VarietyView(generic.DetailView):
+    model = Variety
+    template_name = "wine_wiki/variety.html"
+    context_object_name = "variety"
+
+
+class VarietyListView(generic.ListView):
+    """
+    TODO: turn "" variety into clickable hyperlink - *unassigned*
+    or similar.
+    """
+
+    model = Variety
+    template_name = "wine_wiki/variety_list.html"

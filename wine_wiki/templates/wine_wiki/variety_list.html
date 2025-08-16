@@ -1,0 +1,18 @@
+{% extends "wine_wiki/base.html" %}
+{% block content %}
+    <h1>Variety List</h1>
+
+    A list of varieties present in the database. Each Variety containts a page list of wines made from it.
+
+    <div>
+        <ul>
+            {% for variety in object_list %}
+                <li>
+                    <a href="{{ variety.get_absolute_url }}">{{ variety.name|title }}</a>
+                </li>
+            {% empty %}
+                <p>No varieties found.</p>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

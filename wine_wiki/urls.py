@@ -61,6 +61,8 @@ urlpatterns = [
     ),
     path("producer-list/", view=views.ProducerListView.as_view(), name="producer-list"),
     path("producer/<int:pk>/", view=views.ProducerView.as_view(), name="producer"),
+    path("variety-list/", view=views.VarietyListView.as_view(), name="variety-list"),
+    path("variety/<int:pk>/", view=views.VarietyView.as_view(), name="variety"),
     # path("accounts/", include("django.contrib.auth.urls")),  # new
     # path("sign_up/", view=views.SignUpView.as_view(), name="sign-up"),
 ]

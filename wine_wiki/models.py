@@ -24,6 +24,15 @@ class Producer(models.Model):
 
 class Variety(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    description = models.TextField(
+        help_text="Description of the variety", default="", blank=True
+    )
+
+    def get_absolute_url(self):
+        return reverse("wine_wiki:variety", kwargs={"pk": self.pk})
+
+    def __str__(self):
+        return str(self.name)
 
 
 class Section(models.Model):
@@ -144,10 +153,10 @@ class Wine(models.Model):
             filter(
                 None,
                 [
-                    self.vintage,
+                    str(self.vintage),
                     str(self.producer),
                     self.cuvee_name,
-                    self.variety,
+                    str(self.variety),
                     self.subregion,
                     self.region,
                     self.state,

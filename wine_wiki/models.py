@@ -21,6 +21,9 @@ class Producer(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        ordering = ("region", "name")
+
 
 class Variety(models.Model):
     name = models.CharField(max_length=100, unique=True)
@@ -33,6 +36,9 @@ class Variety(models.Model):
 
     def __str__(self):
         return str(self.name)
+
+    class Meta:
+        ordering = ("name",)
 
 
 class Section(models.Model):

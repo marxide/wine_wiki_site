@@ -143,8 +143,6 @@ class Wine(models.Model):
 
     last_modification_by = models.CharField(max_length=50, null=True)
 
-    """represents a wine wiki wine"""
-
     def get_absolute_url(self):
         return reverse("wine_wiki:wine", kwargs={"pk": self.pk})
 
@@ -176,3 +174,6 @@ class Wine(models.Model):
         return f"{self.producer} {self.wine_name} {self.variety} {self.subregion} {self.region} {self.vintage}".replace(
             " ", "+"
         ).replace("++", "+")  # in the event of null fields
+
+    class Meta:
+        ordering = ("section__order", "subsection__order", "line_num_tot")

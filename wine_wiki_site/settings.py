@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "wine_wiki.apps.WineWikiConfig",
     "wine_wiki_site.apps.WineWikiSiteConfig",
     "dbbackup",
+    "taggit",
 ]
 
 MIDDLEWARE = [

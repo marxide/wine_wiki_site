@@ -145,3 +145,26 @@ div.wine_list_row {
   border-top: 1px solid black;
   padding: 0.5em;
 }
+
+.wine-tags li {
+  border: 1px solid grey;
+  font-size: .75rem;
+  padding: 0.5rem;
+  text-align: center;
+  text-transform: uppercase;
+  white-space: nowrap;
+  display: inline;
+  border-radius: 16px;
+  
+}
+.wine-tags ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0;
+}
+
+.wine-tags li + li {
+  margin-left: .5rem;
+}

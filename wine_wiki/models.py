@@ -4,6 +4,7 @@ from django.contrib.auth.models import User
 from django.template.defaultfilters import default, slugify
 from django.utils.translation import autoreload_started
 from django.urls import reverse
+from taggit.managers import TaggableManager
 
 
 class Producer(models.Model):
@@ -148,6 +149,8 @@ class Wine(models.Model):
     # update wines with already existing descriptions to map the author to the description
 
     last_modification_by = models.CharField(max_length=50, null=True)
+
+    tags = TaggableManager()
 
     def get_absolute_url(self):
         return reverse("wine_wiki:wine", kwargs={"pk": self.pk})

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django_extensions",
     "wine_wiki.apps.WineWikiConfig",
+    "taggit",
 ]
 
 MIDDLEWARE = [

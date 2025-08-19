@@ -22,6 +22,7 @@
                 </li>
                 <li></li>
             </ul>
+
             <h2>Related</h2>
             <ul>
                 <li>
@@ -34,6 +35,15 @@
                     Variety: <a href="{{ wine.variety.get_absolute_url }}">{{ wine.variety.name|title }}</a>
                 </li>
             </ul>
+
+            <h2>Tags</h2>
+            <div class="wine-tags">
+            <ul>
+            {% for tag in wine.tags.all %}
+              <li>{{ tag }}</li>
+            {% endfor %}
+            </ul>
+            </div>
         </div>
     </div>
 {% endblock %}

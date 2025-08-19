@@ -106,7 +106,7 @@ class Wine(models.Model):
     )
     cuvee_name = models.TextField(blank=True, null=True, default=None)
     disgorg_year = models.IntegerField(blank=True, null=True, default=None)
-    price = models.IntegerField(blank=False)
+    price = models.IntegerField(blank=True, default=0)
     merged_text = models.TextField(
         blank=True,
         null=True,
@@ -150,7 +150,7 @@ class Wine(models.Model):
 
     last_modification_by = models.CharField(max_length=50, null=True)
 
-    tags = TaggableManager()
+    tags = TaggableManager(blank=True)
 
     def get_absolute_url(self):
         return reverse("wine_wiki:wine", kwargs={"pk": self.pk})

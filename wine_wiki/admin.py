@@ -3,7 +3,10 @@ from .models import Wine, Producer, Variety
 
 
 class WineAdmin(admin.ModelAdmin):
-    list_filter = ("producer__name", "variety__name")
+    list_filter = (
+        "producer__name",
+        "variety__name",
+    )
     search_fields = ("producer__name", "variety__name")
 
 
